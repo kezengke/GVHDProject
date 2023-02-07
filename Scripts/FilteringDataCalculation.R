@@ -1,0 +1,81 @@
+#Filtering calculation
+
+#phylum
+rm(list = ls())
+myT<-read.table("CountsTables/bracken_phylum_reads.csv", 
+                row.name = 1, sep = ",", header = T, check.names = F)
+#Normalize
+n<-colSums(myT)
+sumx<-sum(myT)
+normT<-log10((myT/n)*(sumx/ncol(myT))+1)
+normT<-data.frame(myT, check.names = F)
+#Filter
+lowAbundance<-which(rowMeans(normT)<2)
+
+#percentage of remained taxa from total
+sum(myT[-lowAbundance,])/sum(myT)
+#percentage of filtered taxa from total
+sum(myT[lowAbundance,])/sum(myT)
+
+#relative abundance of the top 1 taxa that got filtered
+mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ]))
+
+#genus
+rm(list = ls())
+myT<-read.table("CountsTables/bracken_genus_reads.csv", 
+                row.name = 1, sep = ",", header = T, check.names = F)
+#Normalize
+n<-colSums(myT)
+sumx<-sum(myT)
+normT<-log10((myT/n)*(sumx/ncol(myT))+1)
+normT<-data.frame(myT, check.names = F)
+#Filter
+lowAbundance<-which(rowMeans(normT)<2)
+
+#percentage of remained taxa from total
+sum(myT[-lowAbundance,])/sum(myT)
+#percentage of filtered taxa from total
+sum(myT[lowAbundance,])/sum(myT)
+
+#relative abundance of the top 1 taxa that got filtered
+mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ]))
+
+#species
+rm(list = ls())
+myT<-read.delim("CountsTables/bracken_species_reads.csv", 
+                row.name = 1, sep = ",", header = T, check.names = F)
+#Normalize
+n<-colSums(myT)
+sumx<-sum(myT)
+normT<-log10((myT/n)*(sumx/ncol(myT))+1)
+normT<-data.frame(myT, check.names = F)
+#Filter
+lowAbundance<-which(rowMeans(normT)<2)
+
+#percentage of remained taxa from total
+sum(myT[-lowAbundance,])/sum(myT)
+#percentage of filtered taxa from total
+sum(myT[lowAbundance,])/sum(myT)
+
+#relative abundance of the top 1 taxa that got filtered
+mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ]))
+
+#pathway
+rm(list = ls())
+myT<-read.delim("CountsTables/unstratified.txt", 
+                row.name = 1, sep = "\t", header = T, check.names = F)
+#Normalize
+n<-colSums(myT)
+sumx<-sum(myT)
+normT<-log10((myT/n)*(sumx/ncol(myT))+1)
+normT<-data.frame(myT, check.names = F)
+#Filter
+lowAbundance<-which(rowMeans(normT)<1)
+
+#percentage of remained taxa from total
+sum(myT[-lowAbundance,])/sum(myT)
+#percentage of filtered taxa from total
+sum(myT[lowAbundance,])/sum(myT)
+
+#relative abundance of the top 1 taxa that got filtered
+mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ]))
