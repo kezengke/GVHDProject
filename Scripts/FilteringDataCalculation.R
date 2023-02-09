@@ -8,7 +8,7 @@ myT<-read.table("CountsTables/bracken_phylum_reads.csv",
 n<-colSums(myT)
 sumx<-sum(myT)
 normT<-log10((myT/n)*(sumx/ncol(myT))+1)
-normT<-data.frame(myT, check.names = F)
+normT<-data.frame(normT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(normT)<2)
 
@@ -28,7 +28,7 @@ myT<-read.table("CountsTables/bracken_genus_reads.csv",
 n<-colSums(myT)
 sumx<-sum(myT)
 normT<-log10((myT/n)*(sumx/ncol(myT))+1)
-normT<-data.frame(myT, check.names = F)
+normT<-data.frame(normT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(normT)<2)
 
@@ -48,7 +48,7 @@ myT<-read.delim("CountsTables/bracken_species_reads.csv",
 n<-colSums(myT)
 sumx<-sum(myT)
 normT<-log10((myT/n)*(sumx/ncol(myT))+1)
-normT<-data.frame(myT, check.names = F)
+normT<-data.frame(normT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(normT)<2)
 
@@ -64,11 +64,12 @@ mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1])
 rm(list = ls())
 myT<-read.delim("CountsTables/unstratified.txt", 
                 row.name = 1, sep = "\t", header = T, check.names = F)
+myT<-myT[ , -which(colSums(myT) == 0)]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
 normT<-log10((myT/n)*(sumx/ncol(myT))+1)
-normT<-data.frame(myT, check.names = F)
+normT<-data.frame(normT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(normT)<1)
 
