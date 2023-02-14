@@ -1,4 +1,4 @@
-#Filtering calculation
+#Filtering calculation (only prints, no saving for the results)
 
 #phylum
 rm(list = ls())
@@ -18,7 +18,7 @@ sum(myT[-lowAbundance,])/sum(myT)
 sum(myT[lowAbundance,])/sum(myT)
 
 #relative abundance of the top 1 taxa that got filtered
-mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ]))
+mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ])/sum(myT))
 
 #genus
 rm(list = ls())
@@ -38,7 +38,7 @@ sum(myT[-lowAbundance,])/sum(myT)
 sum(myT[lowAbundance,])/sum(myT)
 
 #relative abundance of the top 1 taxa that got filtered
-mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ]))
+mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ])/sum(myT))
 
 #species
 rm(list = ls())
@@ -58,7 +58,7 @@ sum(myT[-lowAbundance,])/sum(myT)
 sum(myT[lowAbundance,])/sum(myT)
 
 #relative abundance of the top 1 taxa that got filtered
-mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ]))
+mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ])/sum(myT))
 
 #pathway
 rm(list = ls())
@@ -79,4 +79,4 @@ sum(myT[-lowAbundance,])/sum(myT)
 sum(myT[lowAbundance,])/sum(myT)
 
 #relative abundance of the top 1 taxa that got filtered
-mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ]))
+mean(as.numeric(myT[names(sort(rowSums(myT[lowAbundance, ]), decreasing = T)[1]), ])/sum(myT))
