@@ -22,10 +22,8 @@ NormT<-NormT[-lowAbundance, ]
 #Stats and pvals
 t_stats<-vector()
 t_test_p<-vector()
-for (i in 1:dim(NormT)[1]){
-  t_stats[i]<-t.test(unlist(NormT[i,])~metaData$dx)$statistic
-  t_test_p[i]<-t.test(unlist(NormT[i,])~metaData$dx)$p.value
-}
+t_stats<-apply(NormT, 1, function(x){t.test(unlist(x)~metaData$dx)$stat})
+t_test_p<-apply(NormT, 1, function(x){t.test(unlist(x)~metaData$dx)$p.value})
 T_stat_table<-cbind(t_stats,t_test_p)
 row.names(T_stat_table)<-rownames(NormT)
 T_stat_table<-data.frame(T_stat_table)
@@ -56,10 +54,8 @@ NormT<-NormT[-lowAbundance, ]
 #Stats and pvals
 t_stats<-vector()
 t_test_p<-vector()
-for (i in 1:dim(NormT)[1]){
-  t_stats[i]<-t.test(unlist(NormT[i,])~metaData$dx)$statistic
-  t_test_p[i]<-t.test(unlist(NormT[i,])~metaData$dx)$p.value
-}
+t_stats<-apply(NormT, 1, function(x){t.test(unlist(x)~metaData$dx)$stat})
+t_test_p<-apply(NormT, 1, function(x){t.test(unlist(x)~metaData$dx)$p.value})
 T_stat_table<-cbind(t_stats,t_test_p)
 row.names(T_stat_table)<-rownames(NormT)
 T_stat_table<-data.frame(T_stat_table)
