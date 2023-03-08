@@ -1,7 +1,7 @@
 rm(list = ls())
 #estimate effect size
 metaData<-read.table("metaGvN.txt", sep = "\t", header = T, row.names = 1)
-myT<-read.delim("bracken/countTables/bracken_genus_reads.csv", 
+myT<-read.delim("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
 metaData<-metaData[colnames(myT),]
 metaData<-data.frame(metaData)
@@ -48,14 +48,3 @@ power_ttest <- run_test(t_func, n.iter=500, output='data.frame', N=300, d=0.24) 
 fd=p.adjust(results(power_ttest)$p,method="fdr")
 length(which(fd<0.05))/500
 
-power_ttest <- run_test(t_func, n.iter=500, output='data.frame', N=100, d=0.27)  # simulate data
-fd=p.adjust(results(power_ttest)$p,method="fdr")
-length(which(fd<0.05))/500
-
-power_ttest <- run_test(t_func, n.iter=500, output='data.frame', N=180, d=0.27)  # simulate data
-fd=p.adjust(results(power_ttest)$p,method="fdr")
-length(which(fd<0.05))/500
-
-power_ttest <- run_test(t_func, n.iter=500, output='data.frame', N=1000000, d=0.00398)  # simulate data
-fd=p.adjust(results(power_ttest)$p,method="fdr")
-length(which(fd<0.05))/500
