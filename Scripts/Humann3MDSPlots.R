@@ -10,8 +10,12 @@ myT<-myT[, rownames(metaData)]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-NormT<-log10((myT/n)*(sumx/ncol(myT))+1)
-NormT<-na.omit(NormT)
+NormT<-myT
+for (i in 1:ncol(NormT)) {
+  NormT[,i]<-NormT[,i]/n[i]
+}
+NormT<-log10(NormT*(sumx/ncol(NormT))+1)
+NormT<-data.frame(NormT, check.names = F)
 
 library("vegan")
 pdf("Plots/Humann3GvNUnstratifiedMDS.pdf",onefile = T)
@@ -47,8 +51,12 @@ myT<-myT[, rownames(metaData)]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-NormT<-log10((myT/n)*(sumx/ncol(myT))+1)
-NormT<-na.omit(NormT)
+NormT<-myT
+for (i in 1:ncol(NormT)) {
+  NormT[,i]<-NormT[,i]/n[i]
+}
+NormT<-log10(NormT*(sumx/ncol(NormT))+1)
+NormT<-data.frame(NormT, check.names = F)
 
 library("vegan")
 pdf("Plots/Humann3SvRUnstratifiedMDS.pdf",onefile = T)

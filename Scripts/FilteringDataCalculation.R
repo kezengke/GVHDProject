@@ -7,7 +7,11 @@ myT<-read.table("CountsTables/bracken_phylum_reads.csv",
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-normT<-log10((myT/n)*(sumx/ncol(myT))+1)
+normT<-myT
+for (i in 1:ncol(normT)) {
+  normT[,i]<-normT[,i]/n[i]
+}
+normT<-log10(normT*(sumx/ncol(normT))+1)
 normT<-data.frame(normT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(normT)<2)
@@ -27,7 +31,11 @@ myT<-read.table("CountsTables/bracken_genus_reads.csv",
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-normT<-log10((myT/n)*(sumx/ncol(myT))+1)
+normT<-myT
+for (i in 1:ncol(normT)) {
+  normT[,i]<-normT[,i]/n[i]
+}
+normT<-log10(normT*(sumx/ncol(normT))+1)
 normT<-data.frame(normT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(normT)<2)
@@ -47,7 +55,11 @@ myT<-read.delim("CountsTables/bracken_species_reads.csv",
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-normT<-log10((myT/n)*(sumx/ncol(myT))+1)
+normT<-myT
+for (i in 1:ncol(normT)) {
+  normT[,i]<-normT[,i]/n[i]
+}
+normT<-log10(normT*(sumx/ncol(normT))+1)
 normT<-data.frame(normT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(normT)<2)
@@ -68,7 +80,11 @@ myT<-myT[ , -which(colSums(myT) == 0)]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-normT<-log10((myT/n)*(sumx/ncol(myT))+1)
+normT<-myT
+for (i in 1:ncol(normT)) {
+  normT[,i]<-normT[,i]/n[i]
+}
+normT<-log10(normT*(sumx/ncol(normT))+1)
 normT<-data.frame(normT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(normT)<1)

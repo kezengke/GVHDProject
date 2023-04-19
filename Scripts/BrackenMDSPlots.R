@@ -6,11 +6,14 @@ myT<-read.table("CountsTables/bracken_genus_reads.csv",
 metaData<-metaData[colnames(myT),]
 metaData<-data.frame(metaData)
 rownames(metaData)<-colnames(myT)
-#Normalization
+#Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
-myT<-data.frame(myT)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
+myT<-data.frame(myT, check.names = F)
 
 library("vegan")
 pdf("Plots/GvNGenusMDS.pdf",onefile = T)
@@ -42,11 +45,14 @@ myT<-read.delim("CountsTables/bracken_species_reads.csv",
 metaData<-metaData[colnames(myT),]
 metaData<-data.frame(metaData)
 rownames(metaData)<-colnames(myT)
-#Normalization
+#Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
-myT<-data.frame(myT)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
+myT<-data.frame(myT, check.names = F)
 
 library("vegan")
 pdf("Plots/GvNSpeciesMDS.pdf",onefile = T)
@@ -80,10 +86,13 @@ metaData<-data.frame(metaData)
 rownames(metaData)<-colnames(myT)
 metaData<-na.omit(metaData)
 myT<-myT[,rownames(metaData)]
-#normalization
+#Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
 myT<-data.frame(myT, check.names = F)
 
 library("vegan")
@@ -116,11 +125,14 @@ myT<-read.table("CountsTables/bracken_genus_reads.csv",
 metaData<-metaData[colnames(myT),, drop = F]
 metaData<-na.omit(metaData)
 myT<-myT[, rownames(metaData), drop = F]
-#Normalization
+#Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
-myT<-data.frame(myT)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
+myT<-data.frame(myT, check.names = F)
 
 library("vegan")
 pdf("Plots/SvRGenusMDS.pdf",onefile = T)
@@ -152,11 +164,14 @@ myT<-read.delim("CountsTables/bracken_species_reads.csv",
 metaData<-metaData[colnames(myT),, drop = F]
 metaData<-na.omit(metaData)
 myT<-myT[, rownames(metaData), drop = F]
-#Normalization
+#Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
-myT<-data.frame(myT)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
+myT<-data.frame(myT, check.names = F)
 
 library("vegan")
 pdf("Plots/SvRSpeciesMDS.pdf",onefile = T)
@@ -188,11 +203,14 @@ myT<-read.table("CountsTables/bracken_phylum_reads.csv",
 metaData<-metaData[colnames(myT),, drop = F]
 metaData<-na.omit(metaData)
 myT<-myT[, rownames(metaData), drop = F]
-#Normalization
+#Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
-myT<-data.frame(myT)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
+myT<-data.frame(myT, check.names = F)
 
 library("vegan")
 pdf("Plots/SvRPhylumMDS.pdf",onefile = T)

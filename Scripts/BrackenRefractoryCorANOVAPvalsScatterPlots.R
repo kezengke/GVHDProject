@@ -14,7 +14,10 @@ myT<-myT[, metaData$dx == "steroid_refractory_gvhd", drop = F]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
 myT<-data.frame(myT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(myT)<2)
@@ -74,7 +77,10 @@ myT<-myT[, metaData$dx == "steroid_refractory_gvhd", drop = F]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
 myT<-data.frame(myT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(myT)<2)
@@ -134,7 +140,10 @@ myT<-myT[, metaData$dx == "steroid_refractory_gvhd", drop = F]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-myT<-log10((myT/n)*(sumx/ncol(myT))+1)
+for (i in 1:ncol(myT)) {
+  myT[,i]<-myT[,i]/n[i]
+}
+myT<-log10(myT*(sumx/ncol(myT))+1)
 myT<-data.frame(myT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(myT)<2)

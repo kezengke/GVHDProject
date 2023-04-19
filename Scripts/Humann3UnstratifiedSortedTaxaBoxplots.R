@@ -12,8 +12,12 @@ rownames(myT)<-sapply(str_split(rownames(myT), ":", n = 2 ), `[`, 1) #stripping 
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-NormT<-log10((myT/n)*(sumx/nrow(myT))+1)
-NormT<-na.omit(NormT)
+NormT<-myT
+for (i in 1:ncol(NormT)) {
+  NormT[,i]<-NormT[,i]/n[i]
+}
+NormT<-log10(NormT*(sumx/ncol(NormT))+1)
+NormT<-data.frame(NormT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(NormT)<1)
 NormT<-NormT[-lowAbundance, ]
@@ -59,8 +63,12 @@ rownames(myT)<-sapply(str_split(rownames(myT), ":", n = 2 ), `[`, 1) #stripping 
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
-NormT<-log10((myT/n)*(sumx/nrow(myT))+1)
-NormT<-na.omit(NormT)
+NormT<-myT
+for (i in 1:ncol(NormT)) {
+  NormT[,i]<-NormT[,i]/n[i]
+}
+NormT<-log10(NormT*(sumx/ncol(NormT))+1)
+NormT<-data.frame(NormT, check.names = F)
 #Filter
 lowAbundance<-which(rowMeans(NormT)<1)
 NormT<-NormT[-lowAbundance, ]
