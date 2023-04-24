@@ -18,9 +18,9 @@ myT<-data.frame(myT, check.names = F)
 lowAbundance<-which(rowMeans(myT)<2)
 myT<-myT[-lowAbundance, ]
 
-test<-t.test(unlist(myT["Saccharomyces", ])~metaData$metaData)
+test<-t.test(unlist(myT["Citrobacter", ])~metaData$metaData)
 #effect size D 
-D<-(test$estimate[1]-test$estimate[2])/sd(myT["Saccharomyces",])
+D<-(test$estimate[1]-test$estimate[2])/sd(myT["Citrobacter",])
 D
 pvals<-test$p.value
 
