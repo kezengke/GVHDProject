@@ -24,6 +24,7 @@ NormT<-na.omit(NormT)
 lowAbundance<-which(rowMeans(NormT)<1)
 NormT<-NormT[-lowAbundance, ]
 
+NormT<-NormT[, rownames(metaData), drop = F]
 #Stats and pvals
 t_stats<-vector()
 t_test_p<-vector()
@@ -61,6 +62,7 @@ NormT<-na.omit(NormT)
 lowAbundance<-which(rowMeans(NormT)<1)
 NormT<-NormT[-lowAbundance, ]
 
+NormT<-NormT[, rownames(metaData), drop = F]
 #Stats and pvals
 t_stats<-vector()
 t_test_p<-vector()
