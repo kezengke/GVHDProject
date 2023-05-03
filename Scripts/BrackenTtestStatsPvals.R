@@ -93,6 +93,9 @@ rm(list = ls())
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.table("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+metaData<-metaData[colnames(myT),, drop = F]
+metaData<-na.omit(metaData)
+myT<-myT[, rownames(metaData), drop = F]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -106,8 +109,6 @@ lowAbundance<-which(rowMeans(myT)<2)
 myT<-myT[-lowAbundance, ]
 
 metaData<-metaData[colnames(myT),, drop = F]
-metaData<-na.omit(metaData)
-myT<-myT[, rownames(metaData), drop = F]
 #Stats and pvals
 t_stats<-vector()
 t_test_p<-vector()
@@ -125,6 +126,9 @@ rm(list = ls())
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.table("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+metaData<-metaData[colnames(myT),, drop = F]
+metaData<-na.omit(metaData)
+myT<-myT[, rownames(metaData), drop = F]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -138,8 +142,6 @@ lowAbundance<-which(rowMeans(myT)<2)
 myT<-myT[-lowAbundance, ]
 
 metaData<-metaData[colnames(myT),, drop = F]
-metaData<-na.omit(metaData)
-myT<-myT[, rownames(metaData), drop = F]
 #Stats and pvals
 t_stats<-vector()
 t_test_p<-vector()
@@ -158,7 +160,9 @@ library("coin")
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
-
+metaData<-metaData[colnames(myT),, drop = F]
+metaData<-na.omit(metaData)
+myT<-myT[, rownames(metaData), drop = F]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -172,8 +176,6 @@ lowAbundance<-which(rowMeans(myT)<2)
 myT<-myT[-lowAbundance, ]
 
 metaData<-metaData[colnames(myT),, drop = F]
-metaData<-na.omit(metaData)
-myT<-myT[, rownames(metaData), drop = F]
 #Stats and pvals
 t_stats<-vector()
 t_test_p<-vector()
