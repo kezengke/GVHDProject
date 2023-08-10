@@ -31,7 +31,7 @@ ttest_res<-na.omit(ttest_res)
 sigTT<-NormT[rownames(ttest_res), , drop = F]
 sigTT<-na.omit(sigTT)
 
-pdf("Plots/Humann3UnstratifiedGvNSortedTaxaBoxPlots(Ttest).pdf", width=14, height=7)
+pdf("Plots/Humann3UnstratifiedGvNSortedPathwaysBoxPlots(Ttest).pdf", width=14, height=7)
 par(mfrow=c(2, 4))
 par(mar=c(5,6,4,1)+.1)
 label = c("GVHD", "No GVHD")
@@ -82,7 +82,7 @@ ttest_res<-na.omit(ttest_res)
 sigTT<-NormT[rownames(ttest_res), , drop = F]
 sigTT<-na.omit(sigTT)
 
-pdf("Plots/Humann3UnstratifiedSvRSortedTaxaBoxPlots(Ttest).pdf", width=14, height=7)
+pdf("Plots/Humann3UnstratifiedSvRSortedPathwaysBoxPlots(Ttest).pdf", width=14, height=7)
 par(mfrow=c(2, 4))
 par(mar=c(5,6,4,1)+.1)
 label = c("Steroid Refractory", "Steroid Sensitive")
