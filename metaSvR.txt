@@ -35,3 +35,5 @@ ID	dx
 6037_07-10-18	steroid_sensitive_gvhd
 3369_08-07-18	steroid_sensitive_gvhd
 9371_10-16-18	steroid_refractory_gvhd
+0005_09-07-16	steroid_sensitive_gvhd
+4415_11-15-16	steroid_sensitive_gvhd
