@@ -5,6 +5,7 @@ par(mfrow=c(2,3))
 rm(list = ls())
 myT<-read.table("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -22,6 +23,7 @@ plot(hist.data, cex.lab=1.5,
 rm(list = ls())
 myT<-read.table("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -39,6 +41,7 @@ plot(hist.data, cex.lab=1.5,
 rm(list = ls())
 myT<-read.delim("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -57,6 +60,7 @@ plot(hist.data, cex.lab=1.5,
 rm(list = ls())
 myT<-read.delim("CountsTables/unstratified.txt",
                 sep = "\t", header = T, row.names = 1, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[ , -which(colSums(myT) == 0)]
 #Normalize
 n<-colSums(myT)

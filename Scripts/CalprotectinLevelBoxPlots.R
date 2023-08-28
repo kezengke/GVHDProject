@@ -7,8 +7,11 @@ calprotectin<-read.table("CountsTables/gvhd_calprotectin_results.tsv", sep = "\t
 calprotectin<-na.omit(calprotectin)
 rownames(calprotectin)<-calprotectin$sample_code
 calprotectin<-calprotectin[, 3, drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "3921_07-18-17"), , drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "6673_12-07-16"), , drop = F]
 metaData<-read.delim("metaGvN.txt", sep = "\t", row.names = 1, header = T)
-calprotectin<-calprotectin[rownames(metaData), , drop = F]
+calprotectin<-calprotectin[intersect(rownames(calprotectin), rownames(metaData)), , drop = F]
+metaData<-metaData[intersect(rownames(calprotectin), rownames(metaData)), , drop = F]
 t_test_p<-t.test(unlist(calprotectin)~factor(metaData$dx))$p.value
 wilcox_p<-pvalue(wilcox_test(unlist(calprotectin)~factor(metaData$dx)))
 label = c("GVHD", "No GVHD")
@@ -26,8 +29,11 @@ calprotectin<-read.table("CountsTables/gvhd_calprotectin_results.tsv", sep = "\t
 calprotectin<-na.omit(calprotectin)
 rownames(calprotectin)<-calprotectin$sample_code
 calprotectin<-calprotectin[, 3, drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "3921_07-18-17"), , drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "6673_12-07-16"), , drop = F]
 metaData<-read.delim("metaSvR.txt", sep = "\t", row.names = 1, header = T)
-calprotectin<-calprotectin[rownames(metaData), , drop = F]
+calprotectin<-calprotectin[intersect(rownames(calprotectin), rownames(metaData)), , drop = F]
+metaData<-metaData[intersect(rownames(calprotectin), rownames(metaData)), , drop = F]
 t_test_p<-t.test(unlist(calprotectin)~factor(metaData$dx))$p.value
 wilcox_p<-pvalue(wilcox_test(unlist(calprotectin)~factor(metaData$dx)))
 label = c("Steroid Refractory", "Steroid Sensitive")

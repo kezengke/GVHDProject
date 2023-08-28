@@ -4,8 +4,11 @@ calprotectin<-read.table("CountsTables/gvhd_calprotectin_results.tsv", sep = "\t
 calprotectin<-na.omit(calprotectin)
 rownames(calprotectin)<-calprotectin$sample_code
 calprotectin<-calprotectin[, 3, drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "3921_07-18-17"), , drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "6673_12-07-16"), , drop = F]
 myT<-read.delim("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 metaData<-read.delim("metaSvR.txt", sep = "\t", row.names = 1, header = T)
 
 metaData<-metaData[intersect(colnames(myT), rownames(metaData)), , drop = F]
@@ -67,8 +70,11 @@ calprotectin<-read.table("CountsTables/gvhd_calprotectin_results.tsv", sep = "\t
 calprotectin<-na.omit(calprotectin)
 rownames(calprotectin)<-calprotectin$sample_code
 calprotectin<-calprotectin[, 3, drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "3921_07-18-17"), , drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "6673_12-07-16"), , drop = F]
 myT<-read.delim("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 metaData<-read.delim("metaSvR.txt", sep = "\t", row.names = 1, header = T)
 
 metaData<-metaData[intersect(colnames(myT), rownames(metaData)), , drop = F]
@@ -130,8 +136,11 @@ calprotectin<-read.table("CountsTables/gvhd_calprotectin_results.tsv", sep = "\t
 calprotectin<-na.omit(calprotectin)
 rownames(calprotectin)<-calprotectin$sample_code
 calprotectin<-calprotectin[, 3, drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "3921_07-18-17"), , drop = F]
+calprotectin<-calprotectin[-which(rownames(calprotectin) == "6673_12-07-16"), , drop = F]
 myT<-read.delim("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 metaData<-read.delim("metaSvR.txt", sep = "\t", row.names = 1, header = T)
 
 metaData<-metaData[intersect(colnames(myT), rownames(metaData)), , drop = F]

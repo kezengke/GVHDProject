@@ -4,6 +4,7 @@ library(stringr)
 metaData<-read.table("metaGvN.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.delim("CountsTables/unstratified.txt",
                 sep = "\t", header = T, row.names = 1, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[ , -which(colSums(myT) == 0)]
 metaData<-metaData[colnames(myT), , drop = F]
 metaData<-na.omit(metaData)
@@ -55,6 +56,7 @@ rm(list = ls())
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.delim("CountsTables/unstratified.txt",
                 sep = "\t", header = T, row.names = 1, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[ , -which(colSums(myT) == 0)]
 metaData<-metaData[colnames(myT), , drop = F]
 metaData<-na.omit(metaData)

@@ -9,6 +9,7 @@ rm(list = ls())
 meta<-read.delim("metaGvN.txt", sep = "\t", header=T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 meta<-meta[intersect(rownames(meta), colnames(myT)), , drop = F]
 myT<-myT[, intersect(rownames(meta), colnames(myT)), drop = F]
 group1<-rownames(meta)[meta$dx == "no_gvhd"]
@@ -32,6 +33,7 @@ rm(list = ls())
 meta<-read.delim("metaSvR.txt", sep = "\t", header=T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 meta<-meta[intersect(rownames(meta), colnames(myT)), , drop = F]
 myT<-myT[, intersect(rownames(meta), colnames(myT)), drop = F]
 group1<-rownames(meta)[meta$dx == "steroid_refractory_gvhd"]
@@ -57,6 +59,7 @@ rm(list = ls())
 meta<-read.delim("metaGvN.txt", sep = "\t", header=T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 meta<-meta[intersect(rownames(meta), colnames(myT)), , drop = F]
 myT<-myT[, intersect(rownames(meta), colnames(myT)), drop = F]
 group1<-rownames(meta)[meta$dx == "no_gvhd"]
@@ -80,6 +83,7 @@ rm(list = ls())
 meta<-read.delim("metaSvR.txt", sep = "\t", header=T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 meta<-meta[intersect(rownames(meta), colnames(myT)), , drop = F]
 myT<-myT[, intersect(rownames(meta), colnames(myT)), drop = F]
 group1<-rownames(meta)[meta$dx == "steroid_refractory_gvhd"]
@@ -104,6 +108,7 @@ rm(list = ls())
 meta<-read.delim("metaGvN.txt", sep = "\t", header=T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 meta<-meta[intersect(rownames(meta), colnames(myT)), , drop = F]
 myT<-myT[, intersect(rownames(meta), colnames(myT)), drop = F]
 group1<-rownames(meta)[meta$dx == "no_gvhd"]
@@ -127,6 +132,7 @@ rm(list = ls())
 meta<-read.delim("metaSvR.txt", sep = "\t", header=T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 meta<-meta[intersect(rownames(meta), colnames(myT)), , drop = F]
 myT<-myT[, intersect(rownames(meta), colnames(myT)), drop = F]
 group1<-rownames(meta)[meta$dx == "steroid_refractory_gvhd"]

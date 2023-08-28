@@ -4,6 +4,7 @@ library(ALDEx2)
 metaData<-read.table("metaGvN.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.csv("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[, intersect(rownames(metaData), colnames(myT)), drop = F]
 metaData<-metaData[intersect(rownames(metaData), colnames(myT)), , drop = F]
 
@@ -16,6 +17,7 @@ write.table(x.tt[, c(3,4), drop = F], "wilcox/BrackenGvNPhylumALDEx2Results.txt"
 metaData<-read.table("metaGvN.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.csv("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[, intersect(rownames(metaData), colnames(myT)), drop = F]
 metaData<-metaData[intersect(rownames(metaData), colnames(myT)), , drop = F]
 
@@ -28,6 +30,7 @@ write.table(x.tt[, c(3,4), drop = F], "wilcox/BrackenGvNGenusALDEx2Results.txt",
 metaData<-read.table("metaGvN.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.csv("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[, intersect(rownames(metaData), colnames(myT)), drop = F]
 metaData<-metaData[intersect(rownames(metaData), colnames(myT)), , drop = F]
 
@@ -42,6 +45,7 @@ rm(list = ls())
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.csv("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[, intersect(rownames(metaData), colnames(myT)), drop = F]
 metaData<-metaData[intersect(rownames(metaData), colnames(myT)), , drop = F]
 
@@ -54,6 +58,7 @@ write.table(x.tt[, c(3,4), drop = F], "wilcox/BrackenSvRPhylumALDEx2Results.txt"
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.csv("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[, intersect(rownames(metaData), colnames(myT)), drop = F]
 metaData<-metaData[intersect(rownames(metaData), colnames(myT)), , drop = F]
 
@@ -66,6 +71,7 @@ write.table(x.tt[, c(3,4), drop = F], "wilcox/BrackenSvRGenusALDEx2Results.txt",
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.csv("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 myT<-myT[, intersect(rownames(metaData), colnames(myT)), drop = F]
 metaData<-metaData[intersect(rownames(metaData), colnames(myT)), , drop = F]
 

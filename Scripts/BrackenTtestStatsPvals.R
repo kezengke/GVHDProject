@@ -3,6 +3,7 @@ rm(list = ls())
 metaData<-read.table("metaGvN.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.table("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -33,6 +34,7 @@ rm(list = ls())
 metaData<-read.table("metaGvN.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.table("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -63,6 +65,7 @@ rm(list = ls())
 metaData<-read.table("metaGvN.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 #Normalize
 n<-colSums(myT)
 sumx<-sum(myT)
@@ -93,6 +96,7 @@ rm(list = ls())
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.table("CountsTables/bracken_phylum_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 metaData<-metaData[colnames(myT),, drop = F]
 metaData<-na.omit(metaData)
 myT<-myT[, rownames(metaData), drop = F]
@@ -126,6 +130,7 @@ rm(list = ls())
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.table("CountsTables/bracken_genus_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 metaData<-metaData[colnames(myT),, drop = F]
 metaData<-na.omit(metaData)
 myT<-myT[, rownames(metaData), drop = F]
@@ -160,6 +165,7 @@ library("coin")
 metaData<-read.table("metaSvR.txt", sep = "\t", header = T, row.names = 1)
 myT<-read.delim("CountsTables/bracken_species_reads.csv", 
                 row.name = 1, sep = ",", header = T, check.names = F)
+myT<-myT[, !(names(myT) %in% c("3921_07-18-17", "6673_12-07-16"))]
 metaData<-metaData[colnames(myT),, drop = F]
 metaData<-na.omit(metaData)
 myT<-myT[, rownames(metaData), drop = F]
